@@ -1,0 +1,72 @@
+name: HonorBadge
+description: '${project.description}'
+prefix: HonorBadge
+version: '${project.version}'
+
+main: clre20.honorBadge.HonorBadge
+api-version: '1.21'
+load: POSTWORLD
+softdepend: [ PlaceholderAPI ]
+website: https://github.com/clre20/HonorBadge
+
+authors: [ Clre20 ]
+
+commands:
+  honorbadge:
+    description: 稱號系統主指令
+    usage: /<command> help
+    aliases: [ hb ]
+
+permissions:
+  honorbadge.use:
+    description: 開啟稱號介面並使用自己的稱號
+    default: true
+  honorbadge.help:
+    description: 查看指令說明
+    default: true
+  honorbadge.version:
+    description: 查看版本、檢查更新，並在登入時收到新版本提醒
+    default: op
+  honorbadge.list:
+    description: 開啟管理用稱號列表
+    default: op
+  honorbadge.create:
+    description: 建立稱號
+    default: op
+  honorbadge.edit:
+    description: 編輯稱號
+    default: op
+  honorbadge.delete:
+    description: 刪除稱號
+    default: op
+  honorbadge.player:
+    description: 查看持有某稱號的玩家
+    default: op
+  honorbadge.playerlist:
+    description: 查看玩家持有的稱號
+    default: op
+  honorbadge.give:
+    description: 給玩家稱號
+    default: op
+  honorbadge.remove:
+    description: 移除玩家的稱號
+    default: op
+  honorbadge.reload:
+    description: 重新載入設定與資料
+    default: op
+  honorbadge.admin:
+    description: HonorBadge 所有權限
+    default: op
+    children:
+      honorbadge.use: true
+      honorbadge.help: true
+      honorbadge.version: true
+      honorbadge.list: true
+      honorbadge.create: true
+      honorbadge.edit: true
+      honorbadge.delete: true
+      honorbadge.player: true
+      honorbadge.playerlist: true
+      honorbadge.give: true
+      honorbadge.remove: true
+      honorbadge.reload: true

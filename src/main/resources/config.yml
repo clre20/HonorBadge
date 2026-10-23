@@ -1,0 +1,90 @@
+# ==============================================
+#  HonorBadge 設定檔
+#  缺少的項目會在啟動與 /hb reload 時自動補上，你改過的值會保留
+#  顏色支援：&a 傳統代碼、&#FF5555 HEX、MiniMessage（如 <gradient:red:gold>文字</gradient>）
+# ==============================================
+
+# 設定檔版本，請勿修改（版本不同時會先備份成 config.yml.bak 再補齊）
+config-version: 1
+
+# 訊息開頭文字，messages.yml 裡的 {prefix} 會換成這裡的內容
+prefix: "&8[&6HonorBadge&8] &r"
+
+# 檢查更新（來源：GitHub clre20/HonorBadge 的 Releases）
+update-checker:
+  # 伺服器啟動時在背景檢查一次，結果寫在主控台
+  check-on-startup: true
+  # 有 honorbadge.version 權限的玩家登入 3 秒後，若有新版本會收到提醒
+  notify-on-join: true
+
+# 稱號外框，{title} 會換成稱號本身（用於 %honorbadge_title% 與 %honorbadge_display%）
+title-format: "&8[{title}&8] "
+
+# %honorbadge_display% 在玩家沒戴稱號時顯示的文字，可使用 PlaceholderAPI 變數
+# 用 %honorbadge_display_<名稱>% 指定這裡的其他項目，例如 %honorbadge_display_admin%
+display-fallback:
+  default: "%luckperms_prefix%"
+  admin: "&b&l✦ &3&l管理員 &b&l✦ "
+  player: "&7&l✧ 冒險者 &7&l✧ "
+
+# 原生顯示：由 HonorBadge 自己顯示稱號
+# 伺服器已有 TAB 或聊天格式插件時，請保持關閉，改用 PAPI 變數
+native-display:
+  # 在聊天訊息前面加上稱號
+  chat: false
+  chat-format: "{title}&f{player} &8» &f{message}"
+  # Tab 列表名稱前面加上稱號
+  tab: false
+  # 頭頂名稱前面加上稱號（使用記分板隊伍，與 TAB 衝突）
+  nametag: false
+
+# 聊天輸入（設定顯示名稱、說明時使用）
+chat-input:
+  # 幾秒內沒輸入就自動取消編輯
+  timeout: 60
+  # 輸入這個字會放棄輸入、回到設定介面
+  cancel-word: "取消"
+  # 設定說明時輸入這個字會清空說明
+  clear-word: "清除"
+  # 說明的分行符號
+  lore-separator: "|"
+
+# 稱號顯示名稱的限制
+title-limits:
+  # 去掉顏色後最多幾個字
+  max-length: 32
+
+# 玩家資料定時存檔的間隔（秒）。資料只在有變動時才寫入
+autosave-interval: 300
+
+# 音效（填 Minecraft 音效 ID）
+sounds:
+  enabled: true
+  click: "ui.button.click"
+  success: "entity.player.levelup"
+  fail: "entity.villager.no"
+
+# 介面按鈕使用的物品
+gui-items:
+  filler: GRAY_STAINED_GLASS_PANE
+  previous-page: ARROW
+  next-page: ARROW
+  close: BARRIER
+  unequip: BUCKET
+  current-info: NAME_TAG
+  empty: STRUCTURE_VOID
+  default-icon: NAME_TAG
+  edit-icon: ITEM_FRAME
+  edit-name: OAK_SIGN
+  edit-lore: WRITABLE_BOOK
+  edit-sort: COMPARATOR
+  edit-cancel: RED_CONCRETE
+  edit-preview: SPYGLASS
+  edit-save: LIME_CONCRETE
+  sort-minus: RED_STAINED_GLASS_PANE
+  sort-plus: LIME_STAINED_GLASS_PANE
+  sort-value: PAPER
+  back: ARROW
+  delete-confirm: RED_CONCRETE
+  delete-info: PAPER
+  delete-cancel: LIME_CONCRETE

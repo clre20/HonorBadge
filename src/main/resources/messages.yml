@@ -1,0 +1,283 @@
+# ==============================================
+#  HonorBadge 訊息檔
+#  缺少的項目會在啟動與 /hb reload 時自動補上，你改過的文字會保留
+#  顏色支援：&a 傳統代碼、&#FF5555 HEX、MiniMessage（如 <gradient:red:gold>文字</gradient>）
+#  {prefix} 會換成 config.yml 的 prefix；其他 {變數} 依各訊息說明
+#  注意：& 顏色代碼會結束前面的 MiniMessage 標籤，同一行混用時請把 & 放在標籤外面
+# ==============================================
+
+# 訊息檔版本，請勿修改
+messages-version: 1
+
+general:
+  no-permission: "{prefix}&c你沒有權限使用這個指令。"
+  player-only: "{prefix}&c這個指令只能由玩家執行。"
+  unknown-subcommand: "{prefix}&c未知的指令，輸入 &e/hb help &c查看說明。"
+  invalid-id: "{prefix}&c稱號 ID 只能使用小寫英文、數字與底線（a-z 0-9 _）。"
+  title-exists: "{prefix}&c稱號 &e{id} &c已經存在。"
+  title-not-found: "{prefix}&c找不到稱號 &e{id}&c。"
+  player-not-found: "{prefix}&c找不到玩家 &e{player}&c（必須曾經進入過伺服器）。"
+  title-being-edited: "{prefix}&c稱號 &e{id} &c正在被 &e{editor} &c編輯中。"
+  data-not-ready: "{prefix}&c你的資料還在載入中，請稍後再試。"
+  index-not-ready: "{prefix}&e持有者資料還在建立中，結果可能不完整。"
+  failed: "{prefix}&c操作失敗，請查看主控台的錯誤訊息。"
+
+usage:
+  create: "{prefix}&c用法：&e/hb create <ID>"
+  edit: "{prefix}&c用法：&e/hb edit <ID>"
+  delete: "{prefix}&c用法：&e/hb del <ID>"
+  player: "{prefix}&c用法：&e/hb player <ID>"
+  playerlist: "{prefix}&c用法：&e/hb playerlist <玩家>"
+  give: "{prefix}&c用法：&e/hb give <ID> <玩家>"
+  remove: "{prefix}&c用法：&e/hb remove <ID> <玩家>"
+
+# /hb help，{version} 為插件版本
+help:
+  header: "&8&m          &r &6&lHonorBadge &7v{version} &8&m          "
+  footer: "&8&m                                        "
+  commands:
+    open: "&e/hb &8- &7開啟稱號介面"
+    help: "&e/hb help &8- &7顯示這個說明"
+    version: "&e/hb version &8- &7查看版本並檢查更新"
+    list: "&e/hb list &8- &7稱號列表（管理）"
+    create: "&e/hb create <ID> &8- &7建立稱號"
+    edit: "&e/hb edit <ID> &8- &7編輯稱號"
+    delete: "&e/hb del <ID> &8- &7刪除稱號"
+    player: "&e/hb player <ID> &8- &7查看持有此稱號的玩家"
+    playerlist: "&e/hb playerlist <玩家> &8- &7查看玩家持有的稱號"
+    give: "&e/hb give <ID> <玩家> &8- &7給玩家稱號"
+    remove: "&e/hb remove <ID> <玩家> &8- &7移除玩家的稱號"
+    reload: "&e/hb reload &8- &7重新載入設定與資料"
+
+# /hb version 與更新提醒，{current} 目前版本、{latest} GitHub 最新版本、{url} 下載網址
+version:
+  current: "{prefix}&7目前版本：&fv{current}"
+  checking: "{prefix}&7正在檢查更新…"
+  latest: "{prefix}&a已是最新版本。"
+  outdated: "{prefix}&e發現新版本 &av{latest}&e！<click:open_url:'{url}'><hover:show_text:'點擊開啟下載頁面'><aqua><u>點此下載</u></aqua></hover></click>"
+  dev-newer: "{prefix}&b目前版本比 GitHub 上的 v{latest} 新（開發版）。"
+  no-release: "{prefix}&7GitHub 上尚無發布版本。"
+  failed: "{prefix}&c檢查更新失敗，請稍後再試。"
+  join-notify: "{prefix}&eHonorBadge 有新版本 &av{latest}&e（目前 v{current}）。<click:open_url:'{url}'><hover:show_text:'點擊開啟下載頁面'><aqua><u>點此下載</u></aqua></hover></click>"
+
+# 主控台訊息
+console:
+  enabled: "HonorBadge v{version} 已啟用，載入 {count} 個稱號。"
+  placeholderapi-hooked: "已連接 PlaceholderAPI，變數 %honorbadge_*% 可以使用。"
+  placeholderapi-missing: "找不到 PlaceholderAPI，PAPI 變數無法使用。"
+  index-ready: "已建立稱號持有者索引（{count} 位玩家）。"
+  update-latest: "已是最新版本（v{current}）。"
+  update-outdated: "發現新版本 v{latest}（目前 v{current}），下載：{url}"
+  update-dev-newer: "目前版本 v{current} 比 GitHub 上的 v{latest} 新（開發版）。"
+  update-no-release: "GitHub 上尚無發布版本。"
+  update-failed: "檢查更新失敗：{error}"
+  config-updated: "{file} 已補上缺少的項目。"
+  config-backup: "{file} 版本不同，已備份為 {backup}。"
+  title-load-failed: "讀取稱號檔案 {file} 失敗：{error}"
+  player-load-failed: "讀取玩家資料 {file} 失敗：{error}"
+  save-failed: "寫入檔案 {file} 失敗：{error}"
+
+reload:
+  done: "{prefix}&a已重新載入設定與 {count} 個稱號。"
+
+# /hb list（主控台），{count} 數量、{id}、{title}、{holders} 持有人數、{sort} 排序值
+list:
+  header: "{prefix}&7共有 &f{count} &7個稱號："
+  entry: "&8- &e{id} &8| {title} &8| &7持有 &f{holders} &7人 &8| &7排序 &f{sort}"
+  none: "{prefix}&7目前沒有任何稱號。"
+
+# /hb player <ID>
+player:
+  header: "{prefix}&7持有 {title} &7的玩家（&f{count} &7人）："
+  list: "&f{players}"
+  separator: "&7, &f"
+  none: "{prefix}&7沒有玩家持有 {title}&7。"
+
+# /hb playerlist <玩家>
+playerlist:
+  header: "{prefix}&e{player} &7持有的稱號（&f{count} &7個）："
+  entry: "&8- {title} &8(&7{id}&8)"
+  entry-equipped: "&8- {title} &8(&7{id}&8) &e✔ 使用中"
+  none: "{prefix}&e{player} &7沒有任何稱號。"
+
+give:
+  success: "{prefix}&a已把稱號 {title} &a給予 &e{player}&a。"
+  already-owned: "{prefix}&e{player} &c已經擁有稱號 {title}&c。"
+  notify: "{prefix}&a你獲得了新稱號 {title}&a！輸入 &e/hb &a使用。"
+
+remove:
+  success: "{prefix}&a已移除 &e{player} &a的稱號 {title}&a。"
+  not-owned: "{prefix}&e{player} &c沒有稱號 {title}&c。"
+  notify: "{prefix}&c你的稱號 {title} &c已被移除。"
+
+equip:
+  success: "{prefix}&a已使用稱號：{title}"
+  already: "{prefix}&e你已經在使用這個稱號了。"
+  not-owned: "{prefix}&c你已經沒有這個稱號了。"
+  unequip-success: "{prefix}&a已卸下稱號。"
+  nothing-equipped: "{prefix}&e你目前沒有使用任何稱號。"
+
+# 建立與編輯稱號
+edit:
+  input-name: "{prefix}&e請在聊天欄輸入顯示名稱（支援顏色），輸入 &c{cancel} &e返回。&7（{timeout} 秒後自動取消）"
+  input-lore: "{prefix}&e請在聊天欄輸入說明，用 &f{separator} &e分行；輸入 &f{clear} &e清空，輸入 &c{cancel} &e返回。&7（{timeout} 秒後自動取消）"
+  input-timeout: "{prefix}&c輸入逾時，已取消編輯，未儲存的變更已捨棄。"
+  name-empty: "{prefix}&c顯示名稱不能是空的，請重新輸入。"
+  name-too-long: "{prefix}&c顯示名稱太長了（最多 {max} 個字），請重新輸入。"
+  name-set: "{prefix}&a顯示名稱已設為：{title}"
+  lore-set: "{prefix}&a說明已更新。"
+  lore-cleared: "{prefix}&a說明已清空。"
+  icon-set: "{prefix}&a圖示已設為 &f{icon}&a。"
+  icon-empty-hand: "{prefix}&c請把要當作圖示的物品拿在主手。"
+  preview: "{prefix}&7預覽："
+  preview-line: "{title}&f{player} &8» &f這是一則範例訊息"
+  created: "{prefix}&a已建立稱號 {title} &8(&7{id}&8)&a。"
+  saved: "{prefix}&a已儲存稱號 {title} &8(&7{id}&8)&a。"
+  cancelled: "{prefix}&7已取消，變更沒有儲存。"
+  discarded: "{prefix}&7介面已關閉，未儲存的變更已捨棄。"
+
+delete:
+  success: "{prefix}&a已刪除稱號 {title} &8(&7{id}&8)&a，並從 &f{count} &a位玩家身上移除。"
+  cancelled: "{prefix}&7已取消刪除。"
+
+# ==============================================
+#  介面文字
+#  {page} 目前頁數、{pages} 總頁數；物品說明中單獨一行的 {lore} 會展開成稱號說明
+# ==============================================
+gui:
+  filler-name: " "
+
+  # 玩家介面（/hb）
+  player:
+    title: "&8我的稱號 &7({page}/{pages})"
+    title-lore-available:
+      - ""
+      - "&a▶ 點擊使用"
+    title-lore-equipped:
+      - ""
+      - "&e✔ 使用中"
+    previous:
+      name: "&e上一頁"
+      lore: [ ]
+    next:
+      name: "&e下一頁"
+      lore: [ ]
+    unequip:
+      name: "&c卸下稱號"
+      lore:
+        - "&7不顯示任何稱號"
+    current:
+      name: "&6目前稱號"
+      lore:
+        - "{title}"
+      none: "&7無"
+    close:
+      name: "&c關閉"
+      lore: [ ]
+    empty:
+      name: "&7你還沒有任何稱號"
+      lore: [ ]
+
+  # 管理列表（/hb list），{id}、{holders}、{sort}
+  admin-list:
+    title: "&8稱號列表 &7({page}/{pages})"
+    title-lore:
+      - "{lore}"
+      - ""
+      - "&7ID：&f{id}"
+      - "&7持有人數：&f{holders}"
+      - "&7排序值：&f{sort}"
+      - ""
+      - "&e▶ 點擊編輯"
+    empty:
+      name: "&7目前沒有任何稱號"
+      lore:
+        - "&7使用 &e/hb create <ID> &7建立"
+
+  # 設定介面（create / edit），{id}、{icon}、{title}、{sort}
+  edit:
+    title-create: "&8建立稱號：{id}"
+    title-edit: "&8編輯稱號：{id}"
+    preview-lore-header:
+      - ""
+      - "&8—— 玩家介面中的樣子 ——"
+    lore-none: "&7（無）"
+    icon:
+      name: "&e設定圖示"
+      lore:
+        - "&7目前：&f{icon}"
+        - ""
+        - "&7把要當作圖示的物品拿在主手"
+        - "&e▶ 點擊設定"
+    name:
+      name: "&e設定顯示名稱"
+      lore:
+        - "&7目前：{title}"
+        - ""
+        - "&e▶ 點擊後在聊天欄輸入"
+    lore:
+      name: "&e設定說明 &7（選填）"
+      lore:
+        - "&7目前："
+        - "{lore}"
+        - ""
+        - "&e▶ 點擊後在聊天欄輸入"
+    sort:
+      name: "&e排序值"
+      lore:
+        - "&7目前：&f{sort}"
+        - "&7數字越小越前面"
+        - ""
+        - "&e▶ 點擊調整"
+    cancel:
+      name: "&c取消"
+      lore:
+        - "&7不儲存並關閉"
+    preview:
+      name: "&b聊天預覽"
+      lore:
+        - "&7在聊天欄顯示套用後的樣子"
+    save:
+      name: "&a確認儲存"
+      lore:
+        - "&7儲存後立即生效"
+
+  # 排序頁，{id}、{sort}
+  sort:
+    title: "&8調整排序：{id}"
+    minus10:
+      name: "&c-10"
+      lore: [ ]
+    minus1:
+      name: "&c-1"
+      lore: [ ]
+    plus1:
+      name: "&a+1"
+      lore: [ ]
+    plus10:
+      name: "&a+10"
+      lore: [ ]
+    value:
+      name: "&f排序值：&e{sort}"
+      lore:
+        - "&7數字越小越前面，可以是負數"
+    back:
+      name: "&e返回"
+      lore: [ ]
+
+  # 刪除確認，{id}、{title}、{holders}
+  delete:
+    title: "&8確認刪除：{id}"
+    confirm:
+      name: "&c&l確認刪除"
+      lore:
+        - "&7會從所有玩家身上移除"
+        - "&c此動作無法復原"
+    info:
+      name: "{title}"
+      lore:
+        - "&7ID：&f{id}"
+        - "&7持有人數：&f{holders}"
+    cancel:
+      name: "&a取消"
+      lore: [ ]
