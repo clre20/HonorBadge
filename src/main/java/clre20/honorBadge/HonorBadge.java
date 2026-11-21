@@ -96,7 +96,11 @@ public final class HonorBadge extends JavaPlugin {
                 "count", String.valueOf(titles.size()))));
 
         if (settings.checkOnStartup()) {
+            if (getServer().getPluginManager().isPluginEnabled("HttpHub") && clre20.httpHub.api.HttpHubAPI.isAvailable()) {
+            clre20.httpHub.api.HttpHubAPI.registerUpdateCheck(this, "clre20/HonorBadge", getPluginMeta().getVersion(), "honorbadge.version", null);
+        } else {
             updates.check().thenAccept(this::logUpdateResult);
+        }
         }
     }
 

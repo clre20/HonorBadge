@@ -6,7 +6,7 @@ version: '${project.version}'
 main: clre20.honorBadge.HonorBadge
 api-version: '1.21'
 load: POSTWORLD
-softdepend: [ PlaceholderAPI ]
+softdepend: [ PlaceholderAPI, HttpHub ]
 website: https://github.com/clre20/HonorBadge
 
 authors: [ Clre20 ]

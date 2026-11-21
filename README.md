@@ -2,6 +2,9 @@
 
 HonorBadge 是一款專為 Paper伺服器設計的稱號系統。管理員透過箱子介面建立、編輯與發放稱號，玩家在介面中點一下即可切換。本插件不直接搶佔 Tab 列表、頭頂名稱或聊天格式，而是提供 PlaceholderAPI 變數交給 TAB、LPC 等插件顯示，避免與既有插件互相覆蓋。
 
+
+> **版本檢查提示**：若伺服器有安裝 [HttpHub](https://github.com/clre20/HttpHub)，本插件自動由 HttpHub 集中處理版本檢查與管理員登入通知，避免各插件自開連線與背景執行緒。
+
 ## 功能特性
 
 * **箱子介面操作**：
@@ -124,6 +127,9 @@ group-formats:
 
 
 # HonorBadge
+
+
+> **Update Checker**: When [HttpHub](https://github.com/clre20/HttpHub) is installed, update checks and operator login alerts are handled centrally by HttpHub via virtual threads, preventing redundant background connections.
 
 HonorBadge is a title (badge) system designed for Paper servers. Administrators create, edit, and grant titles through chest GUIs, and players switch titles with a single click. Instead of taking over the tab list, name tags, or chat format, the plugin exposes PlaceholderAPI placeholders so that plugins such as TAB and LPC can display titles without overriding each other.
 
