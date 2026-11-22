@@ -66,6 +66,7 @@ HonorBadge 是一款專為 Paper伺服器設計的稱號系統。管理員透過
 | `%honorbadge_title%` | 套用 `title-format` 的稱號，例如 `[戰神] `；沒戴時為空 |
 | `%honorbadge_title_raw%` | 只有稱號本身（有顏色、無外框）；沒戴時為空 |
 | `%honorbadge_id%` | 目前稱號的 ID；沒戴時為空 |
+| `%honorbadge_id_color%` | 設定的玩家 ID 顏色（預設 `&b`，避免 ID 與外框括號顏色混淆） |
 | `%honorbadge_count%` | 擁有的稱號數量 |
 | `%honorbadge_display%` | 有稱號顯示稱號，沒有則顯示 `display-fallback.default` |
 | `%honorbadge_display_<名稱>%` | 同上，沒有稱號時改用 `display-fallback.<名稱>` |
@@ -194,6 +195,7 @@ The primary command for this plugin is `/honorbadge`.
 | `%honorbadge_title%` | Title with `title-format` applied, e.g. `[Warlord] `; empty when none |
 | `%honorbadge_title_raw%` | Title only (colored, no frame); empty when none |
 | `%honorbadge_id%` | Equipped title ID; empty when none |
+| `%honorbadge_id_color%` | Configured player ID color (`&b` by default, prevents color clash with brackets) |
 | `%honorbadge_count%` | Number of owned titles |
 | `%honorbadge_display%` | Title when equipped, otherwise `display-fallback.default` |
 | `%honorbadge_display_<name>%` | Same, but falls back to `display-fallback.<name>` |

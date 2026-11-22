@@ -48,6 +48,7 @@ public final class TitleManager {
         File[] files = folder.listFiles((dir, name) -> name.endsWith(".yml"));
         if (files != null) {
             String format = plugin.settings().titleFormat();
+            String idColor = plugin.settings().idColor();
             for (File file : files) {
                 String id = file.getName().substring(0, file.getName().length() - 4);
                 if (!ID_PATTERN.matcher(id).matches()) {
@@ -56,7 +57,7 @@ public final class TitleManager {
                 try {
                     YamlConfiguration yaml = new YamlConfiguration();
                     yaml.load(file);
-                    titles.put(id, fromYaml(id, yaml, format));
+                    titles.put(id, fromYaml(id, yaml, format, idColor));
                 } catch (Exception e) {
                     plugin.getLogger().warning(plugin.console("console.title-load-failed",
                             Map.of("file", file.getName(), "error", String.valueOf(e.getMessage()))));
@@ -66,7 +67,7 @@ public final class TitleManager {
         rebuildSorted();
     }
 
-    private Title fromYaml(String id, YamlConfiguration yaml, String format) {
+    private Title fromYaml(String id, YamlConfiguration yaml, String format, String idColor) {
         String name = yaml.getString("display-name", id);
         Material icon = Material.matchMaterial(yaml.getString("icon", "NAME_TAG"));
         if (icon == null || !icon.isItem() || icon.isAir()) {
@@ -75,7 +76,7 @@ public final class TitleManager {
         List<String> lore = yaml.getStringList("lore");
         int sort = yaml.getInt("sort", 0);
         long created = parseTime(yaml.getString("created"));
-        return new Title(id, name, icon, lore, sort, created, format);
+        return new Title(id, name, icon, lore, sort, created, format, idColor);
     }
 
     private static long parseTime(String text) {

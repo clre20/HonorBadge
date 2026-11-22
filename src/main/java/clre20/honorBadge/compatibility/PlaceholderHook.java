@@ -82,6 +82,8 @@ public final class PlaceholderHook extends PlaceholderExpansion {
                 return title == null ? "" : title.legacyRaw();
             case "id":
                 return title == null ? "" : title.id();
+            case "id_color":
+                return plugin.settings().idColorLegacy();
             case "count":
                 return String.valueOf(data == null ? 0 : data.ownedCount());
             default:

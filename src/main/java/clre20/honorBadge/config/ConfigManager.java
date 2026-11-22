@@ -21,6 +21,8 @@ public final class ConfigManager {
     private boolean checkOnStartup;
     private boolean notifyOnJoin;
     private String titleFormat;
+    private String idColor;
+    private String idColorLegacy;
     private Map<String, String> fallbacks;
     private boolean nativeChat;
     private String nativeChatFormat;
@@ -48,6 +50,9 @@ public final class ConfigManager {
         checkOnStartup = yaml.getBoolean("update-checker.check-on-startup", true);
         notifyOnJoin = yaml.getBoolean("update-checker.notify-on-join", true);
         titleFormat = yaml.getString("title-format", "&8[{title}&8] ");
+        idColor = yaml.getString("id-color", "&b");
+        if (idColor == null) idColor = "&b";
+        idColorLegacy = clre20.honorBadge.util.ColorUtil.toLegacy(clre20.honorBadge.util.ColorUtil.parse(idColor));
 
         Map<String, String> fb = new HashMap<>();
         ConfigurationSection section = yaml.getConfigurationSection("display-fallback");
@@ -99,6 +104,8 @@ public final class ConfigManager {
     public boolean checkOnStartup() { return checkOnStartup; }
     public boolean notifyOnJoin() { return notifyOnJoin; }
     public String titleFormat() { return titleFormat; }
+    public String idColor() { return idColor; }
+    public String idColorLegacy() { return idColorLegacy; }
     public boolean nativeChat() { return nativeChat; }
     public String nativeChatFormat() { return nativeChatFormat; }
     public boolean nativeTab() { return nativeTab; }

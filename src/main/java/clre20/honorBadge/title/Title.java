@@ -19,6 +19,7 @@ public final class Title {
     private final long created;
 
     // 快取的顯示結果
+    private final String idColor;
     private final Component nameComponent;
     private final Component formattedComponent;
     private final String legacyRaw;
@@ -26,22 +27,42 @@ public final class Title {
     private final String formattedSource;
 
     public Title(String id, String displayName, Material icon, List<String> lore, int sort, long created, String titleFormat) {
+        this(id, displayName, icon, lore, sort, created, titleFormat, "&b");
+    }
+
+    public Title(String id, String displayName, Material icon, List<String> lore, int sort, long created, String titleFormat, String idColor) {
         this.id = id;
         this.displayName = displayName;
         this.icon = icon;
         this.lore = List.copyOf(lore);
         this.sort = sort;
         this.created = created;
+        this.idColor = (idColor != null && !idColor.isEmpty()) ? idColor : "&b";
 
         this.nameComponent = ColorUtil.parse(displayName);
-        this.formattedSource = titleFormat.replace("{title}", displayName);
+        String raw = titleFormat.replace("{title}", displayName);
+        if (raw.contains("{id_color}")) {
+            raw = raw.replace("{id_color}", this.idColor);
+        }
+        this.formattedSource = raw;
         this.formattedComponent = ColorUtil.parse(formattedSource);
         this.legacyRaw = ColorUtil.toLegacy(nameComponent);
-        this.legacyFormatted = ColorUtil.toLegacy(formattedComponent);
+
+        String legacyPrefix = ColorUtil.toLegacy(formattedComponent);
+        String legacyId = ColorUtil.toLegacy(ColorUtil.parse(this.idColor));
+        if (!legacyId.isEmpty() && !legacyPrefix.endsWith(legacyId)) {
+            this.legacyFormatted = legacyPrefix + legacyId;
+        } else {
+            this.legacyFormatted = legacyPrefix;
+        }
     }
 
     public Title withFormat(String titleFormat) {
-        return new Title(id, displayName, icon, lore, sort, created, titleFormat);
+        return withFormat(titleFormat, idColor);
+    }
+
+    public Title withFormat(String titleFormat, String idColor) {
+        return new Title(id, displayName, icon, lore, sort, created, titleFormat, idColor);
     }
 
     public String id() { return id; }
@@ -51,6 +72,7 @@ public final class Title {
     public List<String> lore() { return lore; }
     public int sort() { return sort; }
     public long created() { return created; }
+    public String idColor() { return idColor; }
     public Component nameComponent() { return nameComponent; }
     /** 套用 title-format 後的 Component。 */
     public Component formattedComponent() { return formattedComponent; }

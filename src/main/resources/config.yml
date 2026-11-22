@@ -20,6 +20,11 @@ update-checker:
 # 稱號外框，{title} 會換成稱號本身（用於 %honorbadge_title% 與 %honorbadge_display%）
 title-format: "&8[{title}&8] "
 
+# 稱號後方的玩家 ID 顏色代碼（支援 &b 傳統代碼、&#00FFFF HEX 或 MiniMessage）
+# 預設為 &b（青色，與伺服器預設冒險者 ID 顏色一致）
+# 當 %honorbadge_title% 或 %honorbadge_display% 放在玩家 ID 前面時，尾部會自動帶上此顏色，避免 ID 與括號混淆
+id-color: "&b"
+
 # %honorbadge_display% 在玩家沒戴稱號時顯示的文字，可使用 PlaceholderAPI 變數
 # 用 %honorbadge_display_<名稱>% 指定這裡的其他項目，例如 %honorbadge_display_admin%
 display-fallback:
