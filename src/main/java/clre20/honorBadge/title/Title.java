@@ -49,7 +49,7 @@ public final class Title {
         this.legacyRaw = ColorUtil.toLegacy(nameComponent);
 
         String legacyPrefix = ColorUtil.toLegacy(formattedComponent);
-        String legacyId = ColorUtil.toLegacy(ColorUtil.parse(this.idColor));
+        String legacyId = ColorUtil.toLegacyColor(this.idColor);
         if (!legacyId.isEmpty() && !legacyPrefix.endsWith(legacyId)) {
             this.legacyFormatted = legacyPrefix + legacyId;
         } else {

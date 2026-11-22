@@ -51,8 +51,8 @@ public final class ConfigManager {
         notifyOnJoin = yaml.getBoolean("update-checker.notify-on-join", true);
         titleFormat = yaml.getString("title-format", "&8[{title}&8] ");
         idColor = yaml.getString("id-color", "&b");
-        if (idColor == null) idColor = "&b";
-        idColorLegacy = clre20.honorBadge.util.ColorUtil.toLegacy(clre20.honorBadge.util.ColorUtil.parse(idColor));
+        if (idColor == null || idColor.isEmpty()) idColor = "&b";
+        idColorLegacy = clre20.honorBadge.util.ColorUtil.toLegacyColor(idColor);
 
         Map<String, String> fb = new HashMap<>();
         ConfigurationSection section = yaml.getConfigurationSection("display-fallback");

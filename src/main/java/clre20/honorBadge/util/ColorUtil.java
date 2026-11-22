@@ -47,6 +47,21 @@ public final class ColorUtil {
         return SECTION.serialize(component);
     }
 
+    /**
+     * 將顏色或格式字串解析為 Legacy 顏色代碼（支援 &4、&#FF5555 與 MiniMessage 樣式標籤）。
+     * 避免 Adventure 在序列化無文字內容的 Component 時省略顏色代碼。
+     */
+    public static String toLegacyColor(String colorCode) {
+        if (colorCode == null || colorCode.isEmpty()) {
+            return "";
+        }
+        String serialized = toLegacy(parse(colorCode + "X"));
+        if (serialized.endsWith("X")) {
+            return serialized.substring(0, serialized.length() - 1);
+        }
+        return colorCode.replace('&', '§');
+    }
+
     /** 去掉所有顏色後的純文字。 */
     public static String plain(Component component) {
         return PLAIN.serialize(component);
